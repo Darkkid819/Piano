@@ -1,0 +1,12 @@
+*
+
+!*.c
+!*.h
+!Makefile
+!README.md
+!resources/*
+!screenshots/*
+!lib/*
+!include/*
+!bin/*
+!.gitignore
