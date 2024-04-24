@@ -1,10 +1,22 @@
 #include "raylib.h"
+#include <fluidsynth.h>
+#include <stdbool.h>
 
 static void DrawPianoKeys(int, int);
+static void PlayNote(char, bool);
+
+fluid_settings_t* settings = NULL;
+fluid_synth_t* synth = NULL;
+fluid_audio_driver_t* adriver = NULL;
 
 int main() {
     const int screenWidth = 800;
     const int screenHeight = 450;
+
+    settings = new_fluid_settings();
+    fluid_settings_setstr(settings, "audio.driver", "alsa");
+    synth = new_fluid_synth(settings);
+    adriver = new_fluid_audio_driver(settings, synth);
 
     InitWindow(screenWidth, screenHeight, "Piano");
 
@@ -18,6 +30,10 @@ int main() {
 
         EndDrawing();
     }
+
+    delete_fluid_audio_driver(adriver);
+    delete_fluid_synth(synth);
+    delete_fluid_settings(settings);
 
     CloseWindow(); 
 
@@ -60,4 +76,8 @@ static void DrawPianoKeys(int screenWidth, int screenHeight) {
         int textWidth = MeasureText(TextFormat("%c", blackKeys[i]), 20);
         DrawText(TextFormat("%c", blackKeys[i]), blackKeyX + (blackKeyWidth / 2) - (textWidth / 2), 80 + blackKeyHeight / 2, 20, WHITE);
     }
+}
+
+static void PlayNote(char, bool) {
+    
 }

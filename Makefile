@@ -21,9 +21,8 @@ USE_EXTERNAL_GLFW     ?= FALSE
 
 USE_WAYLAND_DISPLAY   ?= FALSE
 
-FLUIDSYNTH_INCLUDE_PATH = ./include
-FLUIDSYNTH_LIB_PATH = ./lib
-FLUIDSYNTH_BIN_PATH = ./bin
+FLUIDSYNTH_INCLUDE_PATH = /usr/include
+FLUIDSYNTH_LIB_PATH = /usr/lib
 
 ifeq ($(PLATFORM),PLATFORM_DESKTOP)
     ifeq ($(OS),Windows_NT)
@@ -181,7 +180,7 @@ ifeq ($(PLATFORM),PLATFORM_DESKTOP)
         LDLIBS = -lraylib -lopengl32 -lgdi32 -lwinmm -lfluidsynth
     endif
     ifeq ($(PLATFORM_OS),LINUX)
-        LDLIBS = -lraylib -lGL -lm -lpthread -ldl -lrt
+        LDLIBS = -lraylib -lGL -lm -lpthread -ldl -lrt -lfluidsynth
         LDLIBS += -lX11
 
         ifeq ($(USE_WAYLAND_DISPLAY),TRUE)
@@ -216,7 +215,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 SRC = $(call rwildcard, *.c, *.h)
-OBJS ?= pong.c
+OBJS ?= piano.c
 
 ifeq ($(PLATFORM),PLATFORM_ANDROID)
     MAKEFILE_PARAMS = -f Makefile.Android
