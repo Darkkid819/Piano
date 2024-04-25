@@ -13,18 +13,18 @@ Before running the program, ensure you have the following installed:
 
 The piano keys are mapped to your keyboard as follows:
 
--C4: S
--C#4/Db4: E
--D4: D
--D#4/Eb4: R
--E4: F
--F4: J
--F#4/Gb4: I
--G4: K
--G#4/Ab4: O
--A4: L
--A#4/Bb4: P
--B4: ;
+- C4: S
+- C#4/Db4: E
+- D4: D
+- D#4/Eb4: R
+- E4: F
+- F4: J
+- F#4/Gb4: I
+- G4: K
+- G#4/Ab4: O
+- A4: L
+- A#4/Bb4: P
+- B4: ;
 
 ## Demo
 
